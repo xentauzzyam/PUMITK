@@ -1,5 +1,40 @@
-
 import 'package:flutter/material.dart';
+import 'package:pumitk/widgets/widgets/beranda_user.dart';
+
+class IntroMasuk extends StatefulWidget {
+  @override
+  _IntroMasukState createState() => _IntroMasukState();
+}
+
+class _IntroMasukState extends State<IntroMasuk> {
+  @override
+  void initState() {
+    super.initState();
+    print("Init state is called");
+
+    // Gunakan Future.delayed untuk menunda navigasi selama beberapa detik (3 detik).
+    Future.delayed(Duration(seconds: 3), () {
+      // Navigasi ke BerandaUser() ketika waktu tertentu tercapai.
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(
+          builder: (context) => BerandaUser(),
+        ),
+      );
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('PUMITK'),
+      ),
+      body: Center(
+        child: IntroLogin(),
+      ),
+    );
+  }
+}
 
 class IntroLogin extends StatelessWidget {
   @override
@@ -29,9 +64,9 @@ class IntroLogin extends StatelessWidget {
                 ),
               ),
               Positioned(
-                top: 100, // Sesuaikan dengan posisi vertikal yang diinginkan
+                top: 0,
                 child: Image.asset(
-                  "assets/logo.png",
+                  "assets/intro_masuk/logo.png",
                   width: 72.7,
                   height: 172.6,
                 ),
